@@ -12,9 +12,9 @@ class TestCLIIntegration:
 
     def run_cli(self, *args):
         """Helper method to run CLI and capture output"""
-        cmd = [sys.executable, "src/cli.py"] + list(args)
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=".")
-        return result
+        cmd = [sys.executable, "-m", "src.cli"] + list(args)
+        res = subprocess.run(cmd, capture_output=True, text=True, cwd=".")
+        return res
 
     def test_cli_add_integration(self):
         """Test CLI can perform addition"""
@@ -36,6 +36,7 @@ class TestCLIIntegration:
         assert result.returncode == 1
         # CLI prints a generic unexpected error message for this case
         assert result.stdout.strip().startswith("Unexpected error:")
+
     def test_cli_multiply_integration(self):
         """Test CLI can perform multiplication"""
         result = self.run_cli("multiply", "5", "3")

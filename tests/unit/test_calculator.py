@@ -3,8 +3,10 @@ Unit Tests for Calculator
 Students start with 2 passing tests, then add more
 """
 
+import sys
+import click
 import pytest
-from src.calculator import add, divide, subtract, multiply, power, square_root
+from src.calculator import add, subtract, multiply, divide, power, square_root
 
 
 class TestBasicOperations:
@@ -95,21 +97,3 @@ class TestAdvancedOperations:
             ValueError, match="Cannot calculate square root of negative"
         ):
             square_root(-4)
-
-
-# class TestMultiplyDivideWithValidation:
-#     """Test multiplication and division with input validation."""
-
-#     def test_multiply_input_validation(self):
-#         """Test multiply rejects non-numeric inputs."""
-#         with pytest.raises(TypeError, match="Both arguments must be numbers"):
-#             multiply("5", 3)
-#         with pytest.raises(TypeError, match="Both arguments must be numbers"):
-#             multiply(5, "3")
-
-#     def test_divide_input_validation(self):
-#         """Test divide rejects non-numeric inputs."""
-#         with pytest.raises(TypeError, match="Division requires numeric inputs"):
-#             divide("10", 2)
-
-# TODO: Students will add TestMultiplyDivide class
